@@ -48,4 +48,3 @@
       height: 150
     - elements: [changes_to_support_access_settings, recent_access]
       height: 400
-
