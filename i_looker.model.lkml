@@ -7,6 +7,7 @@ include: "*.view"
 include: "*.dashboard"
 
 explore: support_access_event {
+  extension: required
   view_name: support_access_event
 
   join: user {
@@ -37,6 +38,7 @@ explore: support_access_event {
 }
 
 explore: dashboard {
+  extension: required
   view_name: dashboard_layout_component
   label: "Dashboard"
 
@@ -88,6 +90,7 @@ explore: db_connection {
 }
 
 explore: event {
+  extension: required
   join: user {
     foreign_key: user_id
   }
@@ -104,6 +107,7 @@ explore: event {
 }
 
 explore: event_attribute {
+  extension: required
   join: event {
     foreign_key: event_id
   }
@@ -123,9 +127,12 @@ explore: event_attribute {
   }
 }
 
-explore: field_usage {}
+explore: field_usage {
+  extension: required
+}
 
 explore: history {
+  extension: required
   join: look {
     foreign_key: look_id
   }
@@ -207,6 +214,7 @@ explore: history {
 }
 
 explore: look {
+  extension: required
   fields: [ALL_FIELDS*, -user.roles]
 
   join: user {
@@ -257,6 +265,7 @@ explore: look {
 }
 
 explore: scheduled_plan {
+  extension: required
   fields: [ALL_FIELDS*, -user.roles]
 
   conditionally_filter: {
@@ -304,6 +313,7 @@ explore: scheduled_plan {
 }
 
 explore: session {
+  extension: required
   join: user {
     foreign_key: user_id
   }
@@ -330,6 +340,7 @@ explore: session {
 }
 
 explore: user {
+  extension: required
   join: credentials_api {
     sql_on: user.id = credentials_api.user_id ;;
     relationship: one_to_one
@@ -386,6 +397,7 @@ explore: user {
 }
 
 explore: user_access_filter {
+  extension: required
   join: user {
     foreign_key: user_id
   }
@@ -402,6 +414,7 @@ explore: user_access_filter {
 }
 
 explore: thumbnail_image {
+  extension: required
   join: dashboard {
     type: left_outer
     sql_on: ${thumbnail_image.dashboard_id} = ${dashboard.id} ;;
@@ -416,6 +429,7 @@ explore: thumbnail_image {
 }
 
 explore: dashboard_performance {
+  extension: required
   from: dashboard_run_event_stats
   view_label: "Dashboard Run"
 
