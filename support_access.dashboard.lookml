@@ -16,7 +16,7 @@
 
     - name: changes_to_support_access_settings
       title: Changes to Support Access Settings
-      model: i__looker
+      model: i_looker
       explore: support_access_event
       type: table
       fields: [support_access_event.name, support_access_admin.name, support_access_event.created_time]
@@ -28,7 +28,7 @@
       query_timezone: user_timezone
 
     - name: recent_access
-      model: i__looker
+      model: i_looker
       explore: support_access_event
       type: table
       fields: [support_access_event.id, support_access_admin.name, support_access_event_attribute.login_purpose, support_access_event.login_date]

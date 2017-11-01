@@ -43,7 +43,7 @@
     - name: dashboard_usage
       title: List of Top Dashboards
       type: table
-      model: i__looker
+      model: i_looker
       explore: history
       dimensions: [dashboard.title]
       measures: [history.query_run_count]
