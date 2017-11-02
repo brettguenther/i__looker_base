@@ -1,4 +1,5 @@
 explore: pdt_log {
+  extension: required
   join: table_to_view_map {
     foreign_key: table_name
   }

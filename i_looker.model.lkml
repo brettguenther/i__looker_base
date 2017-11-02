@@ -82,6 +82,7 @@ explore: dashboard {
 }
 
 explore: db_connection {
+  extension: required
   fields: [ALL_FIELDS*, -user.roles]
 
   join: user {
