@@ -1,4 +1,4 @@
-connection: "looker"
+connection: "bg_looker_app_db"
 
 # include all the views
 include: "*.view"
@@ -43,23 +43,19 @@ explore: dashboard {
   label: "Dashboard"
 
   join: dashboard_layout {
-    foreign_key: dashboard_layout_id
+    sql_on: ${dashboard.id} = ${dashboard_layout.dashboard_id}  ;;
   }
 
   join: dashboard_element {
-    foreign_key: dashboard_element_id
-  }
-
-  join: dashboard {
-    foreign_key: dashboard_layout.dashboard_id
+    sql_on: ${dashboard.id} = ${dashboard_element.dashboard_id} =  ;;
   }
 
   join: space {
-    foreign_key: dashboard.space_id
+    sql_on: ${dashboard.space_id} = ${space.id} ;;
   }
 
   join: user {
-    foreign_key: dashboard.user_id
+    sql_on: ${dashboard.user_id} = ${user.id} ;;
   }
 
   join: role_user {
