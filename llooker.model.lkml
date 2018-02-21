@@ -89,7 +89,7 @@ explore: db_connection {
 explore: event {
   extension: required
   join: user {
-    foreign_key: user_id
+    sql_on: ${event.user_id} = ${user.id} ;;
   }
 
   join: role_user {
@@ -139,7 +139,8 @@ explore: history {
   }
 
   join: user {
-    foreign_key: user_id
+    relationship: many_to_one
+    sql_on: ${history.user_id} = ${user.id} ;;
   }
 
   join: space {
