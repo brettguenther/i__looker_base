@@ -38,24 +38,34 @@ explore: support_access_event {
 }
 
 explore: dashboard {
-  extension: required
+   extension: required
   view_name: dashboard_layout_component
+  from: dashboard_layout_component
   label: "Dashboard"
 
   join: dashboard_layout {
-    sql_on: ${dashboard.id} = ${dashboard_layout.dashboard_id}  ;;
+    sql_on: ${dashboard_layout_component.dashboard_layout_id} = ${dashboard_layout.id}  ;;
+    relationship: many_to_one
   }
 
   join: dashboard_element {
-    sql_on: ${dashboard.id} = ${dashboard_element.dashboard_id} =  ;;
+    sql_on: ${dashboard_layout_component.dashboard_element_id} = ${dashboard_element.id}  ;;
+    relationship: many_to_one
+  }
+
+  join: dashboard {
+    sql_on: ${dashboard_layout.dashboard_id} = ${dashboard.id} ;;
+    relationship: many_to_one
   }
 
   join: space {
     sql_on: ${dashboard.space_id} = ${space.id} ;;
+    relationship: one_to_one
   }
 
   join: user {
     sql_on: ${dashboard.user_id} = ${user.id} ;;
+    relationship: one_to_one
   }
 
   join: role_user {
