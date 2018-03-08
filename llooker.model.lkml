@@ -100,16 +100,18 @@ explore: event {
   extension: required
   join: user {
     sql_on: ${event.user_id} = ${user.id} ;;
+    relationship: many_to_one
   }
 
   join: role_user {
-    sql_on: role_user.user_id = ${user.id} ;;
+    sql_on: ${role_user.user_id} = ${user.id} ;;
     relationship: one_to_many
     fields: []
   }
 
   join: role {
-    foreign_key: role_user.role_id
+    relationship: many_to_one
+    sql_on: ${role_user.role_id} = ${role.id}  ;;
   }
 }
 
