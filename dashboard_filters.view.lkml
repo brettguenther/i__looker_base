@@ -17,8 +17,15 @@ view: dashboard_filters {
                    ,SUBSTRING(event_attribute.NAME, 8) AS filter_name
                    ,event_attribute.VALUE AS filter_value
                FROM event_attribute
+               INNER JOIN event ON event_attribute.event_id = event.id
                WHERE
                    (event_attribute.NAME LIKE 'filter%')
+                   AND
+                   {% if _explore._name == "history" %}
+                     {% condition history.created_date %} event.created_at {% endcondition %}
+                   {% else %}
+                     {% condition dashboard_performance.raw_data_timeframe %} event.created_at {% endcondition %}
+                   {% endif %}
              ) clean_data
            ) make_pairs
            GROUP BY event_id
@@ -35,7 +42,12 @@ view: dashboard_filters {
 
   dimension: filter_json {
     type: string
-    view_label: "Dashboard Run"
     sql: ${TABLE}.filters_json ;;
+    html: <div style="width:200px;text-overflow:ellipsis;">{{ rendered_value }}</div>;;
+  }
+
+  measure: count_filter_combinations {
+    type: count_distinct
+    sql: ${filter_json} ;;
   }
 }
