@@ -20,6 +20,7 @@ view: dashboard {
   dimension_group: deleted {
     type: time
     sql: ${TABLE}.DELETED_AT ;;
+
   }
 
   dimension: description {
@@ -43,10 +44,12 @@ view: dashboard {
     sql: ${TABLE}.TITLE ;;
     html: <a href="/dashboards/{{dashboard.id._value }}">{{value}}</a>
       ;;
+    suggestable: yes
   }
 
   dimension: user_id {
     type: number
+    alias: [userid1]
     hidden: yes
     sql: ${TABLE}.USER_ID ;;
   }

@@ -27,4 +27,8 @@ view: field_usage {
     type: count
     drill_fields: [id]
   }
+  measure: sum_times_used {
+    type: sum
+    sql: ${times_used} ;;
+  }
 }

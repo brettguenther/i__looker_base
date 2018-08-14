@@ -3,6 +3,8 @@ connection: "bg_looker_app_db"
 # include all the views
 include: "*.view"
 
+label: "Test Label"
+
 # include all the dashboards
 include: "*.dashboard"
 

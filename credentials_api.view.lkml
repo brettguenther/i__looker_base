@@ -7,6 +7,7 @@ view: credentials_api {
 
   dimension_group: created {
     type: time
+    hidden: yes
     sql: ${TABLE}.CREATED_AT ;;
   }
 
