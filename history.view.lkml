@@ -189,6 +189,7 @@ view: history {
 
   dimension_group: created {
     type: time
+    timeframes: [minute,minute5]
     sql: ${TABLE}.CREATED_AT ;;
   }
 
